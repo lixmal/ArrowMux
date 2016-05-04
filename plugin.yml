@@ -1,0 +1,15 @@
+name: ArrowMux
+main: eu.randomcrap.arrowmux.ArrowMux
+version: 0.3
+permissions:
+    arrowmux.*:
+        description: gives access to all ArrowMux actions
+        children:
+            explosivetraps.shoot: true
+            explosivetraps.select: true
+    arrowmux.shoot:
+        description: allows shooting special arrow
+        default: op
+    arrowmux.select:
+        description: allows selecting a (different) arrow
+        default: op

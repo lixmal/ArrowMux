@@ -1,0 +1,209 @@
+ArrowMux - an Arrow Multiplexer. Adds various arrows and let's you choose one with the bow.
+
+
+
+== Features
+* Fire Arrow
+* Grapple Arrow
+* Teleport Arrow
+* Explosion Arrow
+* Command Arrow
+* Ice Arrow
+* Mob Arrow
+* Shower Arrow
+* Handy Arrow Selector
+
+=== Fire Arrow
+* a burning arrow, sets blocks and mobs on fire
+* block fire is configurable
+
+=== Grapple Arrow
+* works like a grapple beam from metroid, hookshot from zelda, ...
+* pulls the shooter towards the arrow
+
+=== Teleport Arrow
+* teleports the player where the arrow hits
+* if the arrow hits a mob or player, shooter and target switch places
+
+
+=== Explosion Arrow
+* detonates on hit
+* block damage can be turned off
+
+=== Ice Arrow
+* Zelda MM style ice arrows
+* freezes water
+* freezes mobs & players
+* freeze time and water freeze is configurable
+
+=== Command Arrow
+* executes a configured command
+* has placeholders for position, world, target and shooter
+==== Possible Placeholders
+* &WORLD& - name of the world
+* &SHOOTER& - name of the shooting player
+* &TARGET& - type of the hit mob or name of the hit player
+* &X&, &Y&, &Z& - x, y and z position
+==== Examples
+* tp &SHOOTER& &TARGET& - teleport shooter to target
+* tppos &X& &Y& &Z& - teleport shooter to target position
+* punish lavablock &TARGET& - punishment from [[http://dev.bukkit.org/bukkit-plugins/punishmental/|Punishmental]]
+
+
+
+=== Mob Arrow
+* spawns mob on hit
+* mobs can be selected just like arrows
+* correct type of egg required in inventory
+
+== Arrow Selector
+* Shift+Leftclick with a bow equipped
+* Opens an inventory where you can select arrows
+
+== [[http://dev.bukkit.org/bukkit-mods/arrowmux/pages/crafting-recipes/|Crafting Recipes]]
+
+== Permissons
+* arrowmux.select: allow selecting a (different) arrow (default: op),
+useful if you want to forbid changing arrows but want to give out preselected bows (treasue chests)
+* arrowmux.shoot: allows shooting special arrows (default: op)
+* arrowmux.*: all of the above
+
+== Default Configuration
+<<code yaml>>
+arrows:
+    explosive:
+        power: 2                # explosion power on arrow hit
+        fire: false             # whether explosion sets fire
+        blockDamage: true       # whether explosion damages blocks
+        description:            # arrow description shown ingame
+          - explodes on hit
+        craftShape:             # crafting shape, space is an empty slot
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:         # each symbol (e.g. 'A', 'B', 'o', ...)
+          A: 289                # defines one material used for crafting
+          B: 280
+          C: 288
+        craftAmount: 1          # amount of arrows the crafting yields
+    teleport:
+        description: 
+          - teleports to target
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 368
+          B: 280
+          C: 288
+        craftAmount: 1
+    grapple:
+        description: 
+          - pulls towards arrow
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 346
+          B: 280
+          C: 288
+        craftAmount: 1
+    fire:
+        igniteBlock: true       # whether fire arrows set blocks they hit on fire
+        description: 
+          - burning arrow
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 378
+          B: 280
+          C: 288
+        craftAmount: 1
+    command:
+        command: "tp &SHOOTER& &TARGET&"              # command to execute on hit (without leading slash)
+        triggerOnHit: false                           # whether the command triggers on hit (block, entity, player, mob)
+                                                      # &TARGET& is useless here
+        triggerOnMob: false                           # whether the command triggers on mob hit, &TARGET& is the type of the mob
+        triggerOnPlayer: true                         # whether the command trigger on players, &TARGET& is the name of the player
+        description: 
+          - executes command
+          - on hit
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 137
+          B: 280
+          C: 288
+        craftAmount: 1
+    shower:
+        description: 
+          - 5 arrows at once 
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 262
+          B: 280
+          C: 288
+        craftAmount: 1
+    lightning:
+        description: 
+          - strikes a lightning
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 377
+          B: 280
+          C: 288
+        craftAmount: 1
+    mob:
+        description: 
+          - spawnes a mob
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 383
+          B: 280
+          C: 288
+        craftAmount: 1
+    ice:
+        freezeWater: true               # whether water freezes when the arrow touches
+        freezeDuration: 5               # how long the target stays frozen
+        freezeDurationWater: 10         # 0 for no unfreezing of water
+        description: 
+          - freezes players
+          - and water
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 332
+          B: 280
+          C: 288
+        craftAmount: 1
+<</code>>
+== TODO
+* more arrows :D
+* add protection plugin support
+* add give command
+
+== Caveats
+* atm every arrow consumes one normal arrow additionally
+
+<<youtube dGVNWdpc8Xc>>
+<<youtube T68OuxSfrZ4>>
+
+== Source
+https://github.com/lixmal/ArrowMux

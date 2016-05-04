@@ -1,0 +1,123 @@
+arrows:
+    explosive:
+        power: 2                # explosion power on arrow hit
+        fire: false             # whether explosion sets fire
+        blockDamage: true       # whether explosion damages blocks
+        description:            # arrow description shown ingame
+          - explodes on hit
+        craftShape:             # crafting shape, space is an empty slot
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:         # each symbol (e.g. 'A', 'B', 'o', ...)
+          A: 289                # defines one material used for crafting
+          B: 280
+          C: 288
+        craftAmount: 1          # amount of arrows the crafting yields
+    teleport:
+        description: 
+          - teleports to target
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 368
+          B: 280
+          C: 288
+        craftAmount: 1
+    grapple:
+        description: 
+          - pulls towards arrow
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 346
+          B: 280
+          C: 288
+        craftAmount: 1
+    fire:
+        igniteBlock: true       # whether fire arrows set blocks they hit on fire
+        description: 
+          - burning arrow
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 378
+          B: 280
+          C: 288
+        craftAmount: 1
+    command:
+        command: "tp &SHOOTER& &TARGET&"              # command to execute on hit (without leading slash)
+        triggerOnHit: false                           # whether the command triggers on hit (block, entity, player, mob)
+                                                      # &TARGET& is useless here
+        triggerOnMob: false                           # whether the command triggers on mob hit, &TARGET& is the type of the mob
+        triggerOnPlayer: true                         # whether the command trigger on players, &TARGET& is the name of the player
+        description: 
+          - executes command
+          - on hit
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 137
+          B: 280
+          C: 288
+        craftAmount: 1
+    shower:
+        description: 
+          - 5 arrows at once 
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 262
+          B: 280
+          C: 288
+        craftAmount: 1
+    lightning:
+        description: 
+          - strikes a lightning
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 377
+          B: 280
+          C: 288
+        craftAmount: 1
+    mob:
+        description: 
+          - spawnes a mob
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 383
+          B: 280
+          C: 288
+        craftAmount: 1
+    ice:
+        freezeWater: true               # whether water freezes when the arrow touches
+        freezeDuration: 5               # how long the target stays frozen
+        freezeDurationWater: 10         # 0 for no unfreezing of water
+        description: 
+          - freezes players
+          - and water
+        craftShape: 
+          - " A "
+          - " B "
+          - " C "    
+        craftMaterials:
+          A: 332
+          B: 280
+          C: 288
+        craftAmount: 1

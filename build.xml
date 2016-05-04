@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<!-- Configuration of the Ant build system to generate a Jar file --> 
+<project name="ArrowMux" default="CreateJar">
+  <target name="CreateJar" description="Creates Jar file">
+        <jar jarfile="ArrowMux.jar" basedir="." includes="*.class,*.yml" />
+  </target>
+</project>
