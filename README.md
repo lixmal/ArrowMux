@@ -2,4 +2,6 @@
 An arrow multiplexer plugin for Bukkit (Minecraft)
 
 For usage refer to:
-https://github.com/lixmal/ArrowMux
+http://dev.bukkit.org/bukkit-plugins/arrowmux/
+
+No external dependencies except bukkit
