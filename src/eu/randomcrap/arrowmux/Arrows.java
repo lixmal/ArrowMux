@@ -262,6 +262,8 @@ public class Arrows implements Listener {
                                             player.launchProjectile(Arrow.class)
                                                 .setVelocity(changeDirection(vec, 0, 0, 0));
                                             /*
+                                             * doesn't work
+                                             *
                                              * player.launchProjectile(Arrow.class
                                              * )
                                              * .setVelocity(changeDirection(vec,
@@ -307,6 +309,8 @@ public class Arrows implements Listener {
                 final Block block = arrow.getLocation().getBlock();
                 if ((mat = block.getType()) == Material.WATER || mat == Material.STATIONARY_WATER) {
                     arrow.remove();
+
+                    // check if surrounding blocks (which should become ice) are water
                     final List<Block> icyBlocks = new ArrayList<Block>();
                     icyBlocks.add(block);
                     for (final Block blk : new Block[] { block, block.getRelative(BlockFace.EAST),
@@ -325,6 +329,7 @@ public class Arrows implements Listener {
                             @Override
                             public void run() {
                                 for (final Block bk : icyBlocks) {
+                                    // check blocks again, ice blocks may have become something else in the meantime
                                     if (bk.getType() == Material.ICE) {
                                         bk.setType(Material.WATER);
                                     }
@@ -452,14 +457,6 @@ public class Arrows implements Listener {
                 }
                 else if (arrowType.equals("Ice Arrow")) {
                     arrow.remove();
-                    /*
-                     * Block block = loc.getBlock(); final Material blockType =
-                     * block.getType(); if (blockType == Material.WATER ||
-                     * blockType == Material.STATIONARY_WATER) { while ((block =
-                     * block.getRelative(0, 1, 0)).getType() ==
-                     * Material.STATIONARY_WATER || block.getType() ==
-                     * Material.WATER) { block.setType(Material.ICE); } }
-                     */
                 }
                 else if (arrowType.matches("^.* Mob Arrow$")) {
                     String mob = null;
@@ -544,6 +541,7 @@ public class Arrows implements Listener {
                             }
                         }, 1);
 
+                        // check if surrounding blocks (which should become ice) are air or water
                         final List<Block> icyBlocks = new ArrayList<Block>();
                         for (final Block blk : new Block[] { block, block.getRelative(0, 1, 0),
                                 block.getRelative(0, -1, 0), block.getRelative(1, 0, 0),
@@ -562,6 +560,8 @@ public class Arrows implements Listener {
                             @Override
                             public void run() {
                                 for (final Block blk : icyBlocks) {
+                                    // check blocks again, ice blocks may have become something else in the meantime
+                                    // remove water blocks to prevent flood
                                     final Material blockType = blk.getType();
                                     if (blockType == Material.ICE || blockType == Material.WATER
                                         || blockType == Material.STATIONARY_WATER) {
